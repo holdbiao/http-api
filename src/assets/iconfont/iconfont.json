@@ -1,0 +1,16 @@
+{
+  "id": "1671395",
+  "name": "store-h5",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "400083",
+      "name": "定位",
+      "font_class": "htmal5icon14",
+      "unicode": "e633",
+      "unicode_decimal": 58931
+    }
+  ]
+}
