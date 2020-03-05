@@ -1,21 +1,48 @@
-# store-h5
 
-> A Vue.js project
+# 使用说明
+## 第一步: 解析路由
 
-## Build Setup
-
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
+```javascript
+// 路由格式
+export default {
+    loginIn: '/api/loginIn',
+    loginOut: '/api/loginOut'
+}
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+```javascript
+import login from './api/login'
+// 解析路由
+myServer.parseRouter('login', login)
+// 导出
+export default myServer
+```
+
+## 第二步: 入口文件引入myServer
+
+```javascript
+import Vue from 'vue'
+import http from './http'
+
+// 挂在Vue的原型上,供全局使用
+Vue.prototype.$http = http
+```
+
+## 第三步: 调用方法
+
+
+```javascript
+// async/await
+async created () {
+  let res = await this.$http.shop.shopList()
+  this.shopList = res.data.data
+}
+
+// 或者
+
+created () {
+    this.$http.shop.shopList().then(res => {
+        this.shopList = res.data.data
+    })
+}
+```
